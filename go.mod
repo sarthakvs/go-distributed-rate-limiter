@@ -1,6 +1,6 @@
 module Rate_Limiter
 
-go 1.25.5
+go 1.25.0
 
 require github.com/redis/go-redis/v9 v9.17.2
 
