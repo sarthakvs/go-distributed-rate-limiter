@@ -96,6 +96,6 @@ func main(){
 	if port==""{
 		port="3000"
 	}
-	fmt.Println("Server started at port",port)
+	fmt.Println("Server started at port:",port)
 	http.ListenAndServe("0.0.0.0:"+port,nil)
 }
