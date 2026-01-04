@@ -102,6 +102,16 @@ func main(){
 	helloHandler:= http.HandlerFunc(func(w http.ResponseWriter,r *http.Request){
 		fmt.Fprintf(w,"Hello! Your request was successful. Time : %v\n",time.Now().Format(time.RFC3339))
 	})
+	http.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
+        if r.URL.Path == "/" {
+            w.Header().Set("Content-Type", "text/plain")
+            fmt.Fprintln(w, "Welcome to AegisAPI! 🛡️")
+            fmt.Fprintln(w, "To test the rate limiter, please use the following format:")
+            fmt.Fprintln(w, "URL: /ping?user=<your_name>")
+            return
+        }
+        http.NotFound(w, r)
+    })
 	http.Handle("/ping",limiter.middleware(helloHandler))
 	port := os.Getenv("PORT")
 	if port==""{
