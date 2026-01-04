@@ -105,7 +105,7 @@ func main(){
 	http.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
         if r.URL.Path == "/" {
             w.Header().Set("Content-Type", "text/plain")
-            fmt.Fprintln(w, "Welcome to AegisAPI! 🛡️")
+            fmt.Fprintln(w, "Welcome to AegisAPI!")
             fmt.Fprintln(w, "To test the rate limiter, please use the following format:")
             fmt.Fprintln(w, "URL: /ping?user=<your_name>")
             return
